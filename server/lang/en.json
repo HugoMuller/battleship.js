@@ -1,0 +1,16 @@
+{
+  "__lang"  : "en",
+  "signup"  : "Sign up",
+  "signin"  : "Sign In",
+  "login"   : "Login",
+  "signout" : "Sign out",
+  "titles": {
+    "battleship"    : "Battle Ship",
+    "configuration" : "Configuration"
+  },
+  "messages": {
+    "oops"                  : "Oops something went wrong",
+    "unknown_account"       : "This account does not exist",
+    "internal_server_error" : "Internal Server Error"
+  }
+}

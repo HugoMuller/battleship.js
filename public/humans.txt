@@ -1,0 +1,21 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+  HugoMuller
+
+  From: INSA Lyon ;)
+  Github: https://github.com/HugoMuller
+
+# SITE
+  SiteName: battleship.js
+  CreationDate: 06/12/2014
+  Description: Simple BattleShip Online Game
+  Languages: English
+  License: MIT https://raw.githubusercontent.com/HugoMuller/battleship.js/master/LICENSE
+  
+# THANKS
+
+# TECHNOLOGY COLOPHON
+  HTML5, CSS3
+  jQuery, Modernizr
