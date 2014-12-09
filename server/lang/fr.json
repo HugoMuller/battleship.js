@@ -1,0 +1,16 @@
+{
+  "__lang"  : "fr",
+  "signup"  : "S'enregister",
+  "signin"  : "Connexion",
+  "login"   : "Connexion",
+  "signout" : "Déconnexion",
+  "titles": {
+    "battleship"    : "Battle Ship",
+    "configuration" : "Configuration"
+  },
+  "messages": {
+    "oops"                  : "Oops, quelque chose s'est mal passé",
+    "unknwon_account"       : "Ce compte n'existe pas",
+    "internal_server_error" : "Erreur interne du serveur"
+  }
+}

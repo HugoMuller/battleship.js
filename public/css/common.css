@@ -1,0 +1,97 @@
+.navbar .nav > li > a.brand {
+    padding-left:20px;
+    margin-left:0
+}
+
+.content {
+    margin-top:90px;
+    width:100%
+}
+
+.bs-navbar {
+    height: 60px;
+    margin-bottom: 30px;
+}
+
+.bs-nav {
+    margin-left: 30px;
+}
+
+.navbar .nav > li > a.bs-brand {
+    padding: 5px 15px;
+}
+
+.bs-top10 {
+    top: 10px;
+}
+
+.bs-top5 {
+    padding-top: 5px;
+}
+
+.clear {
+    clear: both;
+}
+
+ul.no-style-list,
+ul.no-style-list {
+    list-style-type: none;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #df2621;
+    background-color: transparent;
+}
+
+.dropdown-menu > li > a.bs-dropdown-a {
+    color: #999999;
+}
+
+.bs-dropdown-menu {
+    background-color: #222222;
+}
+
+.dropdown-menu > li > a.bs-dropdown-a:hover,
+.dropdown-menu > li > a.bs-dropdown-a:focus {
+    color: white;
+    background-color: #df2621;
+}
+
+.bs-pad-left-4 {
+    padding-left: 4px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.bs-env {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #df2621;
+}
+
+.width-auto {
+    width: auto;
+}
+
+.centered-block {
+    display: block;
+    margin: auto;
+}
+
+footer {
+    position:fixed;
+    left:0;
+    bottom:0;
+    height:30px;
+    width:100%;
+    background:#ddd;
+    -webkit-box-shadow:0 8px 6px 6px black;
+    -moz-box-shadow:0 8px 6px 6px black;
+    box-shadow:0 8px 6px 6px black
+}
+
+footer p {
+    padding:5px 0 12px 10px
+}
