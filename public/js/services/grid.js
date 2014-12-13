@@ -17,7 +17,7 @@ angular.module('bs.grid').factory('Grid', ['Node', function(Node){
     return String.fromCharCode(65+n);
   };
 
-  var fadeTh = function(tableId, x, y, fade){
+  var fadeTh = function(tableId, cell, fade){
     var grid = document.getElementById(tableId);
     var bgColor;
     var color;
@@ -28,9 +28,9 @@ angular.module('bs.grid').factory('Grid', ['Node', function(Node){
       bgColor = '#7C1E79';
       color = 'white';
     }
-    
-    var topCell = grid.rows[0].cells[x];
-    var leftCell = grid.rows[y].cells[0];
+
+    var topCell = grid.rows[0].cells[cell.cellIndex];
+    var leftCell = grid.rows[cell.parentNode.rowIndex].cells[0];
     topCell.style.backgroundColor  = bgColor;
     leftCell.style.backgroundColor = bgColor;
     topCell.style.color  = color;
@@ -75,33 +75,27 @@ angular.module('bs.grid').factory('Grid', ['Node', function(Node){
   Grid.prototype.drawGrid = function(){
     var self = this;
     var grid = document.getElementById(this.id);
-
+    var row;
     for(var y=0; y<this.height; y++){
-      var row = grid.insertRow(y);
+      row = grid.insertRow(y);
       for(var x=0; x<this.width; x++){
         var cell = row.insertCell(x);
         var classes = [];
         if(this.getNodeAt(y, x).isBoat) classes.push('isBoat');
         if(this.getNodeAt(y, x).isBombed) classes.push('isBombed');
         cell.className = classes.join(' ');
-        cell.onmouseover = function(){
-          fadeTh(self.id, this.cellIndex, this.parentNode.rowIndex, true);
-        };
-        cell.onmouseout = function(){
-          fadeTh(self.id, this.cellIndex, this.parentNode.rowIndex);
-        };
+        cell.onmouseover = fadeTh.bind(self, self.id, this, true);
+        cell.onmouseout = fadeTh.bind(self, self.id, this, false);
         if(!self.isMine){
-          cell.onclick = function(){
-            self.generateOnClick(this);
-          };
+          cell.onclick = self.generateOnClick.bind(self, this);
         }
       }
       prependTh(row, num2alpha(y));
     }
     row = grid.insertRow(0);
     appendTh(row);
-    for(x=0; x<this.width; x++){
-      appendTh(row, x+1);
+    for(var w=0; w<this.width; w++){
+      appendTh(row, w+1);
     }
   };
 
