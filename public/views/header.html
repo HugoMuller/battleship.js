@@ -1,21 +1,21 @@
 <div data-ng-controller="HeaderController">
   <ul class="navbar-nav nav bs-nav">
     <li>
-      <a class="navbar-brand bs-brand" href="/" ng-bind="global.lang.titles.battleship"></a>
+      <a class="navbar-brand bs-brand" href="#" ng-bind="global.lang.titles.battleship"></a>
     </li>
     <li class="bs-top10 bs-env" ng-if="global.env !== 'PRODUCTION'" ng-bind="global.env"></li>
   </ul>
   <ul class="navbar-nav nav pull-right bs-top5" data-ng-hide="global.authenticated">
-    <li><a class="bs-red-focus" href="signup" ng-bind="global.lang.signup"></a>
+    <li><a class="bs-red-focus" href="#" ng-bind="global.lang.signup"></a>
     </li>
     <li class="divider-vertical"></li>
-    <li><a class="bs-red-focus" href="signin" ng-bind="global.lang.signin"></a>
+    <li><a class="bs-red-focus" href="#" ng-bind="global.lang.signin"></a>
     </li>
   </ul>
   <ul class="navbar-nav nav pull-right bs-top5" data-ng-show="global.authenticated">
     <li class="dropdown">
       <ul class="dropdown-menu bs-dropdown-menu">
-        <li><a class="bs-dropdown-a" href="/signout" ng-bind="global.lang.signout"></a></li>
+        <li><a class="bs-dropdown-a" href="#" ng-bind="global.lang.signout"></a></li>
       </ul>
     </li>
   </ul>

@@ -1,0 +1,62 @@
+#title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    height: 44px;
+}
+
+#scorePannel {
+    float: left;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    width: 200px;
+}
+
+#gridPannel {
+    text-align: center;
+}
+
+#gridPannel > table {
+    display: inline-block;
+}
+
+/************************ bs-grid ************************/
+table.bs-grid {
+    margin: auto auto;
+    border-collapse: collapse;
+}
+
+table.bs-grid td {
+    width: 40px;
+    height: 40px;
+}
+
+table.bs-grid,
+table.bs-grid td,
+table.bs-grid th {
+    border: 1px solid black;
+}
+
+table.bs-grid th {
+    background-color: #7C1E79;
+    color: white;
+}
+
+table.bs-grid td.isBoat {
+    background-color: silver;
+}
+
+table.bs-grid td.isBombed {
+    background: url("../img/white.png") no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+}
+
+table.bs-grid td.isBoat.isBombed {
+    background: silver url("../img/red.png") no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+}
+/*********************************************************/

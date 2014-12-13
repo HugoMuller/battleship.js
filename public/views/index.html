@@ -1,0 +1,16 @@
+<section data-ng-controller="IndexController" data-ng-init="">
+  <div id="title"><h3 ng-bind="global.lang.titles.battleship"></h3></div>
+
+  <div id="gridPannel">
+    <table id="enemyGrid" class="bs-grid"></table>
+    <table id="playerGrid" class="bs-grid"></table>
+  </div>
+
+  <div id="scorePannel">
+    <span ng-bind="global.lang.score">:</span>
+    <span>0</span>
+    <br/>
+    <span ng-bind="global.lang.timeElapsed">:</span>
+    <span id="timeElapsed">0</span>
+  </div>
+</section>

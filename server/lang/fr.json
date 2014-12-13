@@ -1,9 +1,11 @@
 {
-  "__lang"  : "fr",
-  "signup"  : "S'enregister",
-  "signin"  : "Connexion",
-  "login"   : "Connexion",
-  "signout" : "Déconnexion",
+  "__lang"      : "fr",
+  "signup"      : "S'enregister",
+  "signin"      : "Connexion",
+  "login"       : "Connexion",
+  "signout"     : "Déconnexion",
+  "score"       : "Score",
+  "timeElapsed" : "Temps écoulé",
   "titles": {
     "battleship"    : "Battle Ship",
     "configuration" : "Configuration"

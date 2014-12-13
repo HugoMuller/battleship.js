@@ -1,7 +1,7 @@
 'use strict';
 
 //languages service
-angular.module('lang').factory('Lang', ['$http', 'Global', function($http, Global){
+angular.module('bs.lang').factory('Lang', ['$http', 'Global', function($http, Global){
   this.downloadLanguage = function(lang){
     $http
       .get('/getLanguage/' + lang)

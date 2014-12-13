@@ -1,9 +1,11 @@
 {
-  "__lang"  : "en",
-  "signup"  : "Sign up",
-  "signin"  : "Sign In",
-  "login"   : "Login",
-  "signout" : "Sign out",
+  "__lang"      : "en",
+  "signup"      : "Sign up",
+  "signin"      : "Sign In",
+  "login"       : "Login",
+  "signout"     : "Sign out",
+  "score"       : "Score",
+  "timeElapsed" : "Time elapsed",
   "titles": {
     "battleship"    : "Battle Ship",
     "configuration" : "Configuration"
