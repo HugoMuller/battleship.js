@@ -40,6 +40,12 @@ module.exports = function(config){
       type: 'html',
       dir: 'test/coverage/'
     },
+    client: {
+      mocha: {
+        reporter: 'spec',
+        ui: 'bdd'
+      }
+    },
     // web server port
     port: 9876,
     // enable / disable colors in the output (reporters and logs)

@@ -1,6 +1,6 @@
 'use strict';
 
-var watchedFiles = ['gruntfile.js', 'config/express.js', 'server/**/*.js', 'public/js/**',
+var watchedFiles = ['gruntfile.js', 'config/*.js', 'server/**/*.js', 'public/js/**',
   'test/karma/**/*.js', 'test/mocha/**/*.js'];
 
 module.exports = function(grunt) {

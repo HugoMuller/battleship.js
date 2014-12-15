@@ -2,7 +2,7 @@
 
 (function(){
   describe('BattleShip controllers', function(){
-    describe('IndexController', function(){
+    describe('Controller IndexController', function(){
       var scope;
       var IndexController;
 

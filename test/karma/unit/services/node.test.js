@@ -1,11 +1,10 @@
 'use strict';
 
 (function(){
-  describe('BattleShip controllers', function(){
-    describe('NodeFactory', function(){
+  describe('BattleShip services', function(){
+    describe('Factory Node', function(){
       var Node;
 
-      // Load the controllers module
       beforeEach(function(){
         module('bs.grid');
         inject(function($injector){
@@ -13,7 +12,7 @@
         });
       });
 
-      it('should expose some global scope', function(){
+      it('should instanciate two nodes', function(){
         should.exist(Node);
         var actual = new Node(10, 20, true);
         var expected = {
