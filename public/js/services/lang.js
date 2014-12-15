@@ -3,7 +3,6 @@
 //languages service
 angular.module('bs.lang').factory('Lang', ['$http', 'Global', function($http, Global){
   this.downloadLanguage = function(lang){
-    console.log('>>>>send request', lang);
     $http
       .get('/getLanguage/' + lang)
       .success(function(newLang){
@@ -15,7 +14,6 @@ angular.module('bs.lang').factory('Lang', ['$http', 'Global', function($http, Gl
   };
 
   this.setLanguageTo = function(lang){
-    console.log('call setLanguageTo('+lang+')');
     lang = lang || 'en';
     if(!Global.lang || Global.lang.__lang !== lang){
       this.downloadLanguage(lang);

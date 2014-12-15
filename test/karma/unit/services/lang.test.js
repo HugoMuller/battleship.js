@@ -2,37 +2,36 @@
 
 (function(){
   describe('BattleShip services', function(){
-    var Global;
-    var Lang;
-    var $httpBackend;
-    var $timeout;
-    var languageEN = 'en';
-    var languageFR = 'fr';
-    var navigatorLanguage = navigator.language || navigator.userLanguage || navigator.systemLanguage;
-    var defaultLanguage = (/^en/.test(navigatorLanguage)) ? languageEN : languageFR;
-    var expected;
-    var expectedFR = { __lang: languageFR };
-    var expectedEN = { __lang: languageEN };
-    
-    beforeEach(function(){
-      module('bs.system', 'bs.lang');
-      inject(function($injector, _$httpBackend_, _$timeout_){
-        $httpBackend = _$httpBackend_;
-        $timeout = _$timeout_;
-        expected = { __lang: defaultLanguage };
-        
-        $httpBackend
-          .whenGET('/getLanguage/'+languageFR)
-          .respond(200, expectedFR);
-        $httpBackend
-          .whenGET('/getLanguage/'+languageEN)
-          .respond(200, expectedEN);
-
-        if(Global === undefined) Global = $injector.get('Global');
-      });
-    });
-    
     describe('Factory Lang', function(){
+      var Global;
+      var Lang;
+      var $httpBackend;
+      var $timeout;
+      var languageEN = 'en';
+      var languageFR = 'fr';
+      var navigatorLanguage = navigator.language || navigator.userLanguage || navigator.systemLanguage;
+      var defaultLanguage = (/^en/.test(navigatorLanguage)) ? languageEN : languageFR;
+      var expected = { __lang: defaultLanguage };
+      var expectedFR = { __lang: languageFR };
+      var expectedEN = { __lang: languageEN };
+
+      beforeEach(function(){
+        module('bs.system', 'bs.lang');
+        inject(function($injector, _$httpBackend_, _$timeout_){
+          $httpBackend = _$httpBackend_;
+          $timeout = _$timeout_;
+
+          $httpBackend
+            .whenGET('/getLanguage/'+languageFR)
+            .respond(200, expectedFR);
+          $httpBackend
+            .whenGET('/getLanguage/'+languageEN)
+            .respond(200, expectedEN);
+
+          if(Global === undefined) Global = $injector.get('Global');
+        });
+      });
+      
       describe('Invocation', function(){
         it('should invoke the Lang factory and download the default language of the browser', inject(function($injector){
           $httpBackend
@@ -96,14 +95,12 @@
 
           Lang = $injector.get('Lang');
           $timeout(function(){
-            
             should.exist(Global.lang);
-
+            Global.lang.should.be.eql(expected);
+            
             $httpBackend
               .expectGET('/getLanguage/'+nLanguage)
               .respond(200, nExpected);
-            
-            Global.lang.should.be.eql(expected);
             
             Lang.setLanguageTo(nLanguage);
             
@@ -113,7 +110,6 @@
             }, 200);
           }, 200);
 
-          
           $timeout.flush();
           //Flushes all pending requests
           $httpBackend.flush();
