@@ -2,6 +2,7 @@
 .bower-*/
 .idea/
 node_modules/
+public/lib/
 test/coverage/
 npm-debug.log
 public/img/background.png
