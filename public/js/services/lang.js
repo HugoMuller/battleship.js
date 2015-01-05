@@ -3,7 +3,7 @@
 //languages service
 angular.module('bs.lang').factory('Lang', ['$http', 'Global', function($http, Global){
   this.setLanguageTo = function(lang){
-    lang = lang || 'en';
+    lang = lang || this.defaultLanguage;
     if(!Global.lang || Global.lang.__lang !== lang){
       $http
         .get('/getLanguage/' + lang)
@@ -16,9 +16,11 @@ angular.module('bs.lang').factory('Lang', ['$http', 'Global', function($http, Gl
     }
   };
   
-  var navigatorLanguage = navigator.language || navigator.userLanguage || navigator.systemLanguage;
-  var defaultLanguage = (/^en/.test(navigatorLanguage)) ? 'en' : 'fr';
-  this.setLanguageTo(defaultLanguage);
-
+  if(!this.defaultLanguage){
+    var navigatorLanguage = navigator.language || navigator.userLanguage || navigator.systemLanguage;
+    this.defaultLanguage = (/^en/.test(navigatorLanguage)) ? 'en' : 'fr';
+    this.setLanguageTo(this.defaultLanguage);
+  }
+  
   return this;
 }]);
