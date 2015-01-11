@@ -9,7 +9,7 @@ angular.module('bs').config(
     // states for my app
     $stateProvider
       .state('home', {
-        url: '/home',
+        url: '/',
         templateUrl: 'views/index.html'
       });
   }
