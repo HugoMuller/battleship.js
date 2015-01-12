@@ -6,7 +6,7 @@
     height: 44px;
 }
 
-#scorePannel {
+#scorePanel {
     float: left;
     position: absolute;
     top: 200px;
@@ -14,11 +14,11 @@
     width: 200px;
 }
 
-#gridPannel {
+#gridPanel {
     text-align: center;
 }
 
-#gridPannel > table {
+#gridPanel > table {
     display: inline-block;
 }
 

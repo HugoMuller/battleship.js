@@ -1,10 +1,6 @@
 <section data-ng-controller="IndexController">
   <h3 id="title" ng-bind="global.lang.titles.battleship"></h3>
 
-  <div id="gridPannel">
-    <table id="enemyGrid" class="bs-grid"></table>
-    <table id="playerGrid" class="bs-grid"></table>
-  </div>
-
+  <div data-ng-include="'/views/grid-panel.html'"></div>
   <div data-ng-include="'/views/score-panel.html'"></div>
 </section>
