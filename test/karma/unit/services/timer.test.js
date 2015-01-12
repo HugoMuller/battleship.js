@@ -17,7 +17,7 @@
       });
 
       describe('Methods start and stop', function(){
-        it('should start the timer', function(){
+        it('should start and stop the timer', function(){
           this.timeout(3100);
           
           timer.timeElapsed.should.equal(0);
@@ -28,9 +28,11 @@
           $timeout(function(){
             should.exist(timer.timerId);
             timer.timeElapsed.should.equal(3);
-            
-            timer.stop();
+            timer.start(); // should do nothing
+            timer.timeElapsed.should.equal(3);
+            timer.stop().should.be.true;
             should.not.exist(timer.timerId);
+            timer.stop().should.be.false;
           }, 3000);
           
           $interval.flush(3000);

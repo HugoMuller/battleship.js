@@ -13,10 +13,12 @@ angular.module('bs.timer').factory('Timer', ['$interval', function($interval){
   };
   
   this.stop = function(){
-    if(this.timerId === undefined) return;
+    if(this.timerId === undefined) return false;
     
-    $interval.cancel(this.timerId);
+    var stopped = $interval.cancel(this.timerId);
     this.timerId = undefined;
+    
+    return stopped;
   };
   
   this.restart = function(){
