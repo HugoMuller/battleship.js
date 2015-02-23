@@ -46,7 +46,7 @@ angular.module('bs.grid').factory('Grid', ['Node', function(Node){
     if(matrix) this.buildGridFromMatrix(matrix);
     else this.buildGrid();
   };
-  /* istanbul ignore next */
+
   Grid.prototype.getNodeAt = function(x, y){
     return this.nodes[x][y];
   };
@@ -70,7 +70,7 @@ angular.module('bs.grid').factory('Grid', ['Node', function(Node){
       }
     }
   };
-  /* istanbul ignore next */
+
   Grid.prototype.drawGrid = function(){
     var self = this;
     var row;

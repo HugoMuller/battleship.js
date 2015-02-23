@@ -21,7 +21,9 @@ module.exports = function(config){
       'public/js/services/*.js',
       'public/js/controllers/*.js',
       'public/js/init.js',
-      'test/karma/unit/**/*.js'
+      'test/karma/unit/**/*.js',
+      
+      'public/views/grid-panel.html'
     ],
     // list of files to exclude
     exclude: [],
@@ -34,7 +36,13 @@ module.exports = function(config){
       // do not include tests or libraries
       // (these files will be instrumented by Istanbul)
       'public/js/controllers/*.js': ['coverage'],
-      'public/js/services/*.js': ['coverage']
+      'public/js/services/*.js': ['coverage'],
+      
+      'public/views/grid-panel.html': ['html2js']
+    },
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'public/views/',
+      moduleName: 'templates.html'
     },
     coverageReporter: {
       type: 'html',

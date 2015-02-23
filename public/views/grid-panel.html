@@ -1,4 +1,4 @@
 <div id="gridPanel" data-ng-controller="GridController">
-  <table id="enemyGrid" class="bs-grid"></table>
-  <table id="playerGrid" class="bs-grid"></table>
+  <table id="enemyGrid"  class="bs-grid" data-ng-controller="GridController" data-ng-init="init({ id: 'enemyGrid', isMine: false })"></table>
+  <table id="playerGrid" class="bs-grid" data-ng-controller="GridController" data-ng-init="init({ id: 'playerGrid', isMine: true })"></table>
 </div>
