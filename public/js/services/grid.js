@@ -82,10 +82,10 @@ angular.module('bs.grid').factory('Grid', ['Node', function(Node){
         if(this.getNodeAt(y, x).isBoat) classes.push('isBoat');
         if(this.getNodeAt(y, x).isBombed) classes.push('isBombed');
         cell.className = classes.join(' ');
-        cell.onmouseover = fadeTh.bind(self, self.htmlTable, this, true);
-        cell.onmouseout = fadeTh.bind(self, self.htmlTable, this, false);
+        cell.onmouseover = fadeTh.bind(self, self.htmlTable, cell, true);
+        cell.onmouseout = fadeTh.bind(self, self.htmlTable, cell, false);
         if(!this.isMine){
-          cell.onclick = self.generateOnClick.bind(self, this);
+          cell.onclick = self.generateOnClick.bind(self, cell);
         }
       }
       prependTh(row, num2alpha(y));
