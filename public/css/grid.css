@@ -22,7 +22,12 @@
     display: inline-block;
 }
 
-/************************ bs-grid ************************/
+ul#boatList {
+    display: inline-block;
+    list-style-type: none;
+}
+
+/************************ class: bs-grid ************************/
 table.bs-grid {
     margin: auto auto;
     border-collapse: collapse;
@@ -59,4 +64,4 @@ table.bs-grid td.isBoat.isBombed {
     background-size: 20px 20px;
     background-position: center;
 }
-/*********************************************************/
+/****************************************************************/

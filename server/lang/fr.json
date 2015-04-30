@@ -6,6 +6,13 @@
   "signout"     : "Déconnexion",
   "score"       : "Score",
   "timeElapsed" : "Temps écoulé",
+  "boats": {
+    "aircraft_carrier" : "Porte-avions",
+    "battleship"       : "Cuirassé",
+    "submarine"        : "Sous-marin",
+    "cruiser"          : "Croiseur",
+    "destroyer"        : "Torpilleur"
+  },
   "titles": {
     "battleship"    : "Battle Ship",
     "configuration" : "Configuration"

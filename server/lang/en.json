@@ -6,6 +6,13 @@
   "signout"     : "Sign out",
   "score"       : "Score",
   "timeElapsed" : "Time elapsed",
+  "boats": {
+    "aircraft_carrier" : "Aircraft carrier",
+    "battleship"       : "Battleship",
+    "submarine"        : "Submarine",
+    "cruiser"          : "Cruiser",
+    "destroyer"        : "Destroyer"
+  },
   "titles": {
     "battleship"    : "Battle Ship",
     "configuration" : "Configuration"
