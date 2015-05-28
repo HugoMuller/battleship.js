@@ -17,11 +17,7 @@ module.exports = function(config){
       'public/lib/angular-ui-router/release/angular-ui-router.js',
       'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
       'public/lib/angular-bootstrap/ui-bootstrap.js',
-      'public/js/app.js',
-      'public/js/config.js',
-      'public/js/services/*.js',
-      'public/js/controllers/*.js',
-      'public/js/init.js',
+      "public/js/**/*.js",
       'test/karma/unit/**/*.js',
       
       'public/views/grid-panel.html'
@@ -53,7 +49,8 @@ module.exports = function(config){
       mocha: {
         reporter: 'spec',
         ui: 'bdd'
-      }
+      },
+      captureConsole: true
     },
     // web server port
     port: 9876,

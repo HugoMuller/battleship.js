@@ -26,6 +26,7 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
   
   $scope.handleShipDrop = function(draggedItem, targetItem){
     $scope.handleShipDragLeave(draggedItem, targetItem);
+    //TODO
   };
   
   $scope.handleShipDragOver = function(draggedItem, targetItem){
@@ -71,7 +72,7 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
     var pos = (direction === 'horizontal') ? 'x' : 'y';
     for(var i=0; i<size; i++){
       if(grid.nodeExist(coord.x, coord.y)){
-        grid.getCellAt(coord.x+1, coord.y+1).style.backgroundColor = '#00A2E8';
+        grid.getCellAt(coord.x+1, coord.y+1).style.backgroundColor = '';
       }
       ++coord[pos];
     }

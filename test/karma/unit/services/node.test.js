@@ -14,12 +14,13 @@
 
       it('should instanciate two nodes', function(){
         should.exist(Node);
-        var actual = new Node(10, 20, true);
+        var actual = new Node(10, 20, true, 'battleship');
         var expected = {
           x: 10,
           y: 20,
           isBoat: true,
-          isBombed: false
+          isBombed: false,
+          boatType: 'battleship'
         };
         actual.should.eql(expected);
         
@@ -28,7 +29,8 @@
           x: 0,
           y: 0,
           isBoat: false,
-          isBombed: false
+          isBombed: false,
+          boatType: null
         };
         actual.should.eql(expected);
       });
