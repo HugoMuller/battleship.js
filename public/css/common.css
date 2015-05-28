@@ -1,5 +1,5 @@
 body {
-    background: rgb(0, 162, 232);
+    background: #00A2E8;
     padding: 20px;
 }
 
@@ -44,7 +44,7 @@ ul.no-style-list {
 }
 
 .navbar-inverse .navbar-nav > li > a:hover {
-    color: #df2621;
+    color: #DF2621;
     background-color: transparent;
 }
 
@@ -59,7 +59,7 @@ ul.no-style-list {
 .dropdown-menu > li > a.bs-dropdown-a:hover,
 .dropdown-menu > li > a.bs-dropdown-a:focus {
     color: white;
-    background-color: #df2621;
+    background-color: #DF2621;
 }
 
 .bs-pad-left-4 {
@@ -73,7 +73,7 @@ ul.no-style-list {
 .bs-env {
     padding-top: 15px;
     padding-bottom: 15px;
-    color: #df2621;
+    color: #DF2621;
 }
 
 .width-auto {

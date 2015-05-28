@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bs.grid').factory('Grid', ['Node', function(Node){
+angular.module('bs.grid').factory('Grid', ['Node', '_', function(Node, _){
   /* istanbul ignore next */
   var appendTh = function(row, content){
     var th = document.createElement('th');
@@ -42,13 +42,34 @@ angular.module('bs.grid').factory('Grid', ['Node', function(Node){
     this.nodes = [];
     this.width = width;
     this.height = height;
+    this._attr = {};
 
     if(matrix) this.buildGridFromMatrix(matrix);
     else this.buildGrid();
   };
 
+  Grid.prototype.setTdAttributes = function(attr){
+    if(_.isPlainObject(attr)){
+      if(!_.isPlainObject(this._attr)){
+        this._attr = {};
+      }
+      this._attr.td = attr;
+    }else{
+      throw new Error('ERROR: Grid.setAttributes, parameter \'attr\' should be an object');
+    }
+  };
+  
   Grid.prototype.getNodeAt = function(x, y){
     return this.nodes[x][y];
+  };
+
+  Grid.prototype.getCellAt = function(x, y){
+    return this.htmlTable.rows[y].cells[x];
+  };
+
+  /* istanbul ignore next */
+  Grid.prototype.nodeExist = function(x, y){
+    return (x>=0 && x<this.width && y>=0 && y<this.height);
   };
 
   Grid.prototype.buildGrid = function(){
@@ -71,7 +92,7 @@ angular.module('bs.grid').factory('Grid', ['Node', function(Node){
     }
   };
 
-  Grid.prototype.drawGrid = function(){
+  Grid.prototype.drawGrid = function(callback){
     var self = this;
     var row;
     for(var y=0; y<this.height; y++){
@@ -87,6 +108,12 @@ angular.module('bs.grid').factory('Grid', ['Node', function(Node){
         if(!this.isMine){
           cell.onclick = self.generateOnClick.bind(self, cell);
         }
+        if(_.isPlainObject(this._attr) && _.isPlainObject(this._attr.td)){
+          Object.keys(this._attr.td).forEach(function(attr){
+            cell.setAttribute(attr, self._attr.td[attr]);
+          });
+        }
+        if(typeof callback === 'function') callback(cell);
       }
       prependTh(row, num2alpha(y));
     }

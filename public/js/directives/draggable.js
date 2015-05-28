@@ -8,6 +8,7 @@ angular.module('bs').directive('draggable', function(){
     elem.addEventListener('dragstart', function(event){
       event.dataTransfer.effectAllowed = 'copy'; // only dropEffect='copy' will be dropable
       event.dataTransfer.setData('Text', this.id); // required otherwise doesn't work
+      event.dataTransfer.setData('battleship/'+this.id, this.id); // hack
       this.classList.add('drag');
       return false;
     }, false);

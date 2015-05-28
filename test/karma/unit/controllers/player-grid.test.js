@@ -16,7 +16,7 @@
       };
       
       beforeEach(function(){
-        module('bs.system', 'bs.grid', 'templates.html');
+        module('bs.system', 'bs.lodash', 'bs.grid', 'templates.html');
         inject(function($controller, $injector, $rootScope, $compile, $templateCache){
           scope = $rootScope.$new();
           var elem = angular.element(document.body);

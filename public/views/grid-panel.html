@@ -1,13 +1,17 @@
 <div id="gridPanel">
   <table id="enemyGrid" class="bs-grid" data-ng-controller="EnemyGridController"></table>
   <div data-ng-controller="PlayerGridController" class="inline-block">
-    <table id="playerGrid" class="bs-grid" droppable dropper="dropper" drop="handleDrop"></table>
+    <table id="playerGrid" class="bs-grid"></table>
   </div>
   <ul id="boatList" data-ng-controller="BoatListController">
     <li ng-repeat="boat in boats"
-      id="[['boat_'+boat.type]]"
-      ng-bind="global.lang.boats[boat.type] + ': ' + boat.size"
-      draggable>
+        id="[['boat_'+boat.type]]"
+        boat-size="[[boat.size]]"
+        boat-direction="horizontal"
+        draggable>
+      <img id="[['img_boat_'+boat.type]]" 
+           ng-src="[[pathToImg+boat.type+'.png']]" 
+           title="[[ global.lang.boats[boat.type] ]]"/>
     </li>
   </ul>
 </div>

@@ -3,6 +3,8 @@
 (function(){
   describe('BattleShip services', function(){
     describe('Factory Grid', function(){
+      var compile;
+      var scope;
       var Grid;
       var Node;
       var matrix = [[0, 0, 0,  0,  10, 0,  0, 0, 0, 1],
@@ -27,7 +29,7 @@
       before(function(){
         module('templates.html');
         inject(function($templateCache, $compile, $rootScope){
-          var scope = $rootScope.$new();
+          scope = $rootScope.$new();
           var elem = angular.element(document.body);
           elem.empty();
           elem.append($templateCache.get('grid-panel.html'));
@@ -37,8 +39,10 @@
       });
       
       beforeEach(function(){
-        module('bs.system', 'bs.grid');
-        inject(function($injector){
+        module('bs.system', 'bs.lodash', 'bs.grid');
+        inject(function($injector, $compile, $rootScope){
+          compile = $compile;
+          scope = $rootScope.$new();
           Grid = $injector.get('Grid');
           Node = $injector.get('Node');
         });
@@ -153,6 +157,62 @@
         
         grid.htmlTable.rows.length.should.equal(data.height+1);
         grid.htmlTable.rows[0].cells.length.should.equal(data.width+1);
+      });
+      
+      it('should init some attributes for all the TDs of the grid', function(){
+        var data = {
+          id     : 'playerGrid',
+          isMine : true,
+          width  : matrix.length,
+          height : matrix[0].length
+        };
+
+        var tdAttr = {
+          droppable : '',
+          dropper   : 'dropper',
+          drop      : 'handleDrop',
+          dragover  : 'handleDragOver'
+        };
+        var grid = new Grid(data.id, data.width, data.height, data.isMine);
+        grid.setTdAttributes(tdAttr);
+        grid._attr.td.should.contain(tdAttr);
+        
+        grid.setTdAttributes.should.throw();
+        grid.setTdAttributes.bind(grid, null).should.throw();
+        grid.setTdAttributes.bind(grid, undefined).should.throw();
+        grid.setTdAttributes.bind(grid, []).should.throw();
+        grid.setTdAttributes.bind(grid, 0).should.throw();
+        grid.setTdAttributes.bind(grid, 'attr').should.throw();
+      });
+
+      it('should init some attributes for all the TDs of the grid', function(){
+        var data = {
+          id     : 'playerGrid',
+          isMine : true,
+          width  : matrix.length,
+          height : matrix[0].length
+        };
+
+        var tdAttr = {
+          droppable : '',
+          dropper   : 'dropper',
+          drop      : 'handleDrop',
+          dragover  : 'handleDragOver'
+        };
+        var grid = new Grid(data.id, data.width, data.height, data.isMine);
+        grid.setTdAttributes(tdAttr);
+        grid.drawGrid(function(cell){
+          compile(cell)(scope);
+        });
+        
+        var cells = grid.htmlTable.getElementsByTagName('td');
+        var l = cells.length;
+        for(var i = 0; i < l; i++){
+          cells[i].getAttribute('droppable').should.equal(tdAttr.droppable);
+          cells[i].getAttribute('dropper').should.equal(tdAttr.dropper);
+          cells[i].getAttribute('drop').should.equal(tdAttr.drop);
+          cells[i].getAttribute('dragover').should.equal(tdAttr.dragover);
+        }
       });
 
       afterEach(function(){

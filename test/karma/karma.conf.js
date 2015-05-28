@@ -9,6 +9,7 @@ module.exports = function(config){
     frameworks: ['mocha', 'chai'],
     // list of files / patterns to load in the browser
     files: [
+      'public/lib/lodash/dist/lodash.min.js',
       'public/lib/angular/angular.js',
       'public/lib/angular-mocks/angular-mocks.js',
       'public/lib/angular-cookies/angular-cookies.js',

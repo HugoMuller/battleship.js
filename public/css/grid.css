@@ -15,7 +15,8 @@
 }
 
 #gridPanel {
-    text-align: center;
+    position: absolute;
+    padding-left: 150px;
 }
 
 #gridPanel > table {
@@ -47,6 +48,7 @@ table.bs-grid th {
 table.bs-grid th {
     background-color: #7C1E79;
     color: white;
+    text-align: center;
 }
 
 table.bs-grid td.isBoat {

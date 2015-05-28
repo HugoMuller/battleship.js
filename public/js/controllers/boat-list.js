@@ -9,4 +9,5 @@ angular.module('bs.system').controller('BoatListController', ['$scope', 'Global'
     { type: 'cruiser',          size: 3 },
     { type: 'destroyer',        size: 2 }
   ];
+  $scope.pathToImg = '/img/boats/';
 }]);
