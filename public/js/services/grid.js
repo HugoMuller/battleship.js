@@ -95,6 +95,8 @@ angular.module('bs.grid').factory('Grid', ['Node', '_', function(Node, _){
   Grid.prototype.drawGrid = function(callback){
     var self = this;
     var row;
+    this.htmlTable.innerHTML = '';
+    
     for(var y=0; y<this.height; y++){
       row = this.htmlTable.insertRow(y);
       for(var x=0; x<this.width; x++){
