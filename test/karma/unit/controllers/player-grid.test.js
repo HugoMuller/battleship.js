@@ -50,7 +50,9 @@
         scope.handleShipDragOver(draggedItem, targetItem);
         
         for(var i=0; i<length; i++){
-          grid.rows[coord.y].cells[coord.x+i].style.backgroundColor.should.equal('green');
+          var cell = grid.rows[coord.y].cells[coord.x+i];
+          cell.style.backgroundColor.should.equal('green');
+          cell.classList.contains('bs-notDroppable').should.be.false;
         }
       });
 
@@ -68,7 +70,9 @@
         scope.handleShipDragOver(draggedItem, targetItem);
 
         for(var i=0; i<length; i++){
-          grid.rows[coord.y+i].cells[coord.x].style.backgroundColor.should.equal('green');
+          var cell = grid.rows[coord.y+i].cells[coord.x];
+          cell.style.backgroundColor.should.equal('green');
+          cell.classList.contains('bs-notDroppable').should.be.false;
         }
       });
 
@@ -87,7 +91,9 @@
         for(var i=0; i<length; i++){
           var X = coord.x+i;
           if(X<grid.rows[0].cells.length){
-            grid.rows[coord.y].cells[X].style.backgroundColor.should.equal('red');
+            var cell = grid.rows[coord.y].cells[X];
+            cell.style.backgroundColor.should.equal('red');
+            cell.classList.contains('bs-notDroppable').should.be.true;
           }else{
             break;
           }
@@ -110,7 +116,9 @@
         for(var i=0; i<length; i++){
           var Y = coord.y+i;
           if(Y<grid.rows.length){
-            grid.rows[Y].cells[coord.x].style.backgroundColor.should.equal('red');
+            var cell = grid.rows[Y].cells[coord.x];
+            cell.style.backgroundColor.should.equal('red');
+            cell.classList.contains('bs-notDroppable').should.be.true;
           }else{
             break;
           }
@@ -130,13 +138,17 @@
         scope.handleShipDragOver(draggedItem, targetItem);
 
         for(var i=0; i<length; i++){
-          grid.rows[coord.y].cells[coord.x+i].style.backgroundColor.should.equal('green');
+          var cell = grid.rows[coord.y].cells[coord.x+i];
+          cell.style.backgroundColor.should.equal('green');
+          cell.classList.contains('bs-notDroppable').should.be.false;
         }
 
         scope.handleShipDragLeave(draggedItem, targetItem);
 
         for(i=0; i<length; i++){
-          grid.rows[coord.y].cells[coord.x+i].style.backgroundColor.should.equal('');
+          cell = grid.rows[coord.y].cells[coord.x+i];
+          cell.style.backgroundColor.should.equal('');
+          cell.classList.contains('bs-notDroppable').should.be.false;
         }
       });
 
@@ -154,18 +166,49 @@
         scope.handleShipDragOver(draggedItem, targetItem);
 
         for(var i=0; i<length; i++){
-          grid.rows[coord.y+i].cells[coord.x].style.backgroundColor.should.equal('green');
+          var cell = grid.rows[coord.y+i].cells[coord.x];
+          cell.style.backgroundColor.should.equal('green');
+          cell.classList.contains('bs-notDroppable').should.be.false;
         }
 
         scope.handleShipDragLeave(draggedItem, targetItem);
 
         for(i=0; i<length; i++){
-          grid.rows[coord.y+i].cells[coord.x].style.backgroundColor.should.equal('');
+          cell = grid.rows[coord.y+i].cells[coord.x];
+          cell.style.backgroundColor.should.equal('');
+          cell.classList.contains('bs-notDroppable').should.be.false;
         }
       });
 
       it('should perform a drop', function(){
-        //TODO
+        var grid = document.getElementById('playerGrid');
+        var draggedItem = document.getElementById('boat_cruiser');
+        draggedItem.setAttribute('boat-direction', 'vertical');
+        var coord = {
+          x: 1,
+          y: 1
+        };
+        var targetItem = grid.rows[coord.y].cells[coord.x];
+        var length = draggedItem.getAttribute('boat-size');
+
+        scope.handleShipDragOver(draggedItem, targetItem);
+
+        for(var i=0; i<length; i++){
+          var cell = grid.rows[coord.y+i].cells[coord.x];
+          cell.style.backgroundColor.should.equal('green');
+          cell.classList.contains('bs-notDroppable').should.be.false;
+        }
+
+        scope.handleShipDrop(draggedItem, targetItem);
+
+        for(i=0; i<length; i++){
+          cell = grid.rows[coord.y+i].cells[coord.x];
+          cell.style.backgroundColor.should.equal('');
+          cell.style.backgroundImage.should.be.ok;
+          cell.style.backgroundPosition.should.be.ok;
+          cell.style.backgroundRepeat.should.equal('no-repeat');
+          cell.classList.contains('bs-notDroppable').should.be.false;
+        }
       });
 
       after(function(){

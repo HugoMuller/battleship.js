@@ -25,8 +25,26 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
   });
   
   $scope.handleShipDrop = function(draggedItem, targetItem){
-    $scope.handleShipDragLeave(draggedItem, targetItem);
-    //TODO
+    var direction = draggedItem.getAttribute('boat-direction');
+    var size = parseInt(draggedItem.getAttribute('boat-size'));
+    var tileSize = 100/(size-1);
+    var coord = {
+      x: targetItem.cellIndex-1,
+      y: targetItem.parentNode.rowIndex-1
+    };
+    var pos = (direction === 'horizontal') ? 'x' : 'y';
+    for(var i=0; i<size; i++){
+      if(grid.nodeExist(coord.x, coord.y)){
+        var cellStyle = grid.getCellAt(coord.x+1, coord.y+1).style; 
+        cellStyle.backgroundColor = '';
+        var img = '/img/boats/' + draggedItem.id.replace('boat_', '') + '.png';
+        cellStyle.backgroundImage = 'url("' + img + '")';
+        cellStyle.backgroundRepeat = 'no-repeat';
+        cellStyle.backgroundPosition = i*tileSize+'% 0%';
+        grid.getNodeAt(coord.y, coord.x).isBoat = true;
+      }
+      ++coord[pos];
+    }
   };
   
   $scope.handleShipDragOver = function(draggedItem, targetItem){
@@ -50,13 +68,17 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
       }
       ++coord[pos];
     }
-
-    var backgroundColor = droppable ? 'green' : 'red';
     coord[pos] = lastCoord[pos];
     
     for(i=0; i<size; i++){
       if(grid.nodeExist(coord.x, coord.y)){
-        grid.getCellAt(coord.x+1, coord.y+1).style.backgroundColor = backgroundColor;
+        var cell = grid.getCellAt(coord.x+1, coord.y+1);
+        if(droppable){
+          cell.style.backgroundColor = 'green';
+        }else{
+          cell.style.backgroundColor = 'red';
+          cell.classList.add('bs-notDroppable'); 
+        }
       }
       ++coord[pos];
     }
@@ -72,7 +94,9 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
     var pos = (direction === 'horizontal') ? 'x' : 'y';
     for(var i=0; i<size; i++){
       if(grid.nodeExist(coord.x, coord.y)){
-        grid.getCellAt(coord.x+1, coord.y+1).style.backgroundColor = '';
+        var cell = grid.getCellAt(coord.x+1, coord.y+1);
+        cell.style.backgroundColor = '';
+        cell.classList.remove('bs-notDroppable');
       }
       ++coord[pos];
     }

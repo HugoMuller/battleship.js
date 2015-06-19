@@ -104,16 +104,20 @@ angular.module('bs').directive('droppable', function(){
         this.classList.remove('over');
         var item = document.getElementById(event.dataTransfer.getData('Text'));
         if(item === null) throw new Error(elem.id + '.drop failed because target item does not exist');
-        item.parentNode.removeChild(item);
+
+        var fn = 'dragleave'; //abort drop if object has class bs-notDroppable
+        if(!this.classList.contains('bs-notDroppable')){
+          item.parentNode.removeChild(item);
+          fn = 'drop';
+        }
         var self = this;
-        // call the passed drop function
         scope.$apply(function(scope){
-          var drop = scope.drop();
-          if(typeof drop === 'function'){
-            drop(item, self);
+          var callback = scope[fn]();
+          if(typeof callback === 'function'){
+            callback(item, self);
           }
         });
-        
+
         return false;
       }, false);
     }
