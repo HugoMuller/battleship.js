@@ -37,8 +37,6 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
       if(grid.nodeExist(coord.x, coord.y)){
         var cellStyle = grid.getCellAt(coord.x+1, coord.y+1).style; 
         cellStyle.backgroundColor = '';
-        
-        var img = '/img/boats/' + draggedItem.id.replace('boat_', '') + '.png';
         cellStyle.backgroundImage = 'url("' + draggedItem.toDataURL() + '")';
         cellStyle.backgroundRepeat = 'no-repeat';
         var bgx = i*tileSize+'%';
@@ -48,6 +46,8 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
       }
       ++coord[pos];
     }
+    var li = document.getElementById(draggedItem.id.replace('canvas_', ''));
+    li.removeChild(li.getElementsByTagName('img')[0]);
   };
   
   $scope.handleShipDragOver = function(draggedItem, targetItem){
