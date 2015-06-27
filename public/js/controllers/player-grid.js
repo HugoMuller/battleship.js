@@ -37,10 +37,13 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
       if(grid.nodeExist(coord.x, coord.y)){
         var cellStyle = grid.getCellAt(coord.x+1, coord.y+1).style; 
         cellStyle.backgroundColor = '';
+        
         var img = '/img/boats/' + draggedItem.id.replace('boat_', '') + '.png';
-        cellStyle.backgroundImage = 'url("' + img + '")';
+        cellStyle.backgroundImage = 'url("' + draggedItem.toDataURL() + '")';
         cellStyle.backgroundRepeat = 'no-repeat';
-        cellStyle.backgroundPosition = i*tileSize+'% 0%';
+        var bgx = i*tileSize+'%';
+        var bgy = '0%';
+        cellStyle.backgroundPosition = (direction === 'horizontal') ? bgx+' '+bgy : bgy+' '+bgx;
         grid.getNodeAt(coord.y, coord.x).isBoat = true;
       }
       ++coord[pos];

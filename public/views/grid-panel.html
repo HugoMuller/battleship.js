@@ -4,14 +4,13 @@
     <table id="playerGrid" class="bs-grid"></table>
   </div>
   <ul id="boatList" data-ng-controller="BoatListController">
-    <li ng-repeat="boat in boats"
-        id="[['boat_'+boat.type]]"
-        boat-size="[[boat.size]]"
-        boat-direction="horizontal"
-        draggable>
-      <img id="[['img_boat_'+boat.type]]" 
-           ng-src="[[pathToImg+boat.type+'.png']]" 
-           title="[[ global.lang.boats[boat.type] ]]"/>
+    <li ng-repeat="boat in boats" id="[['boat_'+boat.type]]">
+      <img src="/img/icons/rotate.png" title="rotate" ng-click="rotateBoat('canvas_boat_'+boat.type);"/>
+      <canvas id="[['canvas_boat_'+boat.type]]"
+              boat-size="[[boat.size]]"
+              boat-direction="horizontal"
+              init-boat-canvas
+              draggable/>
     </li>
   </ul>
 </div>
