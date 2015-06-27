@@ -1,16 +1,25 @@
 <div id="gridPanel">
   <table id="enemyGrid" class="bs-grid" data-ng-controller="EnemyGridController"></table>
-  <div data-ng-controller="PlayerGridController" class="inline-block">
+  <div id="divPlayerGrid" data-ng-controller="PlayerGridController" class="inline-block">
     <table id="playerGrid" class="bs-grid"></table>
   </div>
-  <ul id="boatList" data-ng-controller="BoatListController">
-    <li ng-repeat="boat in boats" id="[['boat_'+boat.type]]">
-      <img src="/img/icons/rotate.png" title="rotate" ng-click="rotateBoat('canvas_boat_'+boat.type);"/>
-      <canvas id="[['canvas_boat_'+boat.type]]"
-              boat-size="[[boat.size]]"
-              boat-direction="horizontal"
-              init-boat-canvas
-              draggable/>
-    </li>
-  </ul>
+  <div data-ng-controller="BoatListController" class="inline-block">
+    <div class="clickable centered" ng-click="reset();">
+      <img src="/img/icons/reset.png"/>
+      Reset
+    </div>
+    <br/>
+    <ul id="boatList">
+      <li ng-repeat="boat in boats" id="[['boat_'+boat.type]]">
+        <img src="/img/icons/rotate.png" title="rotate"
+             class="clickable" ng-click="rotateBoat('canvas_boat_'+boat.type);"/>
+        <canvas id="[['canvas_boat_'+boat.type]]"
+                class="draggable"
+                boat-size="[[boat.size]]"
+                boat-direction="horizontal"
+                init-boat-canvas
+                draggable/>
+      </li>
+    </ul>
+  </div>
 </div>

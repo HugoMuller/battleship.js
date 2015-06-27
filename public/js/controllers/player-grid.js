@@ -11,18 +11,29 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
     x: 0,
     y: 0
   };
-  var grid = new Grid(id, width, height, isMine);
-  grid.setTdAttributes({
-    droppable : '',
-    dropper   : 'dropper',
-    drop      : 'handleShipDrop',
-    dragover  : 'handleShipDragOver',
-    dragenter : 'handleShipDragOver',
-    dragleave : 'handleShipDragLeave'
-  });
-  grid.drawGrid(function(cell){
-    $compile(cell)($scope);
-  });
+  var grid;
+  
+  $scope.init = function(){
+    grid = new Grid(id, width, height, isMine);
+    grid.setTdAttributes({
+      droppable : '',
+      dropper   : 'dropper',
+      drop      : 'handleShipDrop',
+      dragover  : 'handleShipDragOver',
+      dragenter : 'handleShipDragOver',
+      dragleave : 'handleShipDragLeave'
+    });
+    grid.drawGrid(function(cell){
+      $compile(cell)($scope);
+    });
+  };
+  
+  $scope.redraw = function(){
+    if(grid instanceof Grid && grid.htmlTable){
+      angular.element(grid.htmlTable).empty();
+    }
+    $scope.init();
+  };
   
   $scope.handleShipDrop = function(draggedItem, targetItem){
     var direction = draggedItem.getAttribute('boat-direction');
@@ -103,5 +114,7 @@ angular.module('bs.system').controller('PlayerGridController', ['$compile', '$sc
       }
       ++coord[pos];
     }
-  }
+  };
+  
+  $scope.init();
 }]);
