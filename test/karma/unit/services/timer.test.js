@@ -39,6 +39,17 @@
           $timeout.flush(3000);
         });
       });
+      
+      //TODO: rewrite this test after setting timeElapsed variable as private
+      describe('Method formattedTimeElapsed', function(){
+        it('should return the time elapsed as a hh:mm:ss string', function(){
+          timer.timeElapsed = 3661;
+          timer.formattedTimeElapsed().should.equal('01:01:01');
+
+          timer.timeElapsed = 40271;
+          timer.formattedTimeElapsed().should.equal('11:11:11');
+        })
+      });
 
       afterEach(function(){
         //Verifies that there are no pending tasks that need to be flushed

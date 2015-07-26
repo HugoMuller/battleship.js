@@ -137,8 +137,9 @@
 
         scope.handleShipDragOver(draggedItem, targetItem);
 
+        var cell;
         for(var i=0; i<length; i++){
-          var cell = grid.rows[coord.y].cells[coord.x+i];
+          cell = grid.rows[coord.y].cells[coord.x+i];
           cell.style.backgroundColor.should.equal('green');
           cell.classList.contains('bs-notDroppable').should.be.false;
         }
@@ -165,8 +166,9 @@
 
         scope.handleShipDragOver(draggedItem, targetItem);
 
+        var cell;
         for(var i=0; i<length; i++){
-          var cell = grid.rows[coord.y+i].cells[coord.x];
+          cell = grid.rows[coord.y+i].cells[coord.x];
           cell.style.backgroundColor.should.equal('green');
           cell.classList.contains('bs-notDroppable').should.be.false;
         }
@@ -192,9 +194,10 @@
         var length = draggedItem.getAttribute('boat-size');
 
         scope.handleShipDragOver(draggedItem, targetItem);
-
+        
+        var cell;
         for(var i=0; i<length; i++){
-          var cell = grid.rows[coord.y+i].cells[coord.x];
+          cell = grid.rows[coord.y+i].cells[coord.x];
           cell.style.backgroundColor.should.equal('green');
           cell.classList.contains('bs-notDroppable').should.be.false;
         }

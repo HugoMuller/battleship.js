@@ -26,5 +26,18 @@ angular.module('bs.timer').factory('Timer', ['$interval', function($interval){
     this.start();
   };
   
+  this.formattedTimeElapsed = function(){
+    var t = this.timeElapsed%3600;
+    var h = Math.floor(this.timeElapsed/3600);
+    var m = Math.floor(t/60);
+    var s = t%60;
+
+    if(h<10) h = '0'+h;
+    if(m<10) m = '0'+m;
+    if(s<10) s = '0'+s;
+
+    return h+':'+m+':'+s;
+  };
+  
   return this;
 }]);

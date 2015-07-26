@@ -89,6 +89,11 @@ ul.no-style-list {
     display: inline-block;
 }
 
+.inline-block-top {
+    display: inline-block;
+    vertical-align: top;
+}
+
 footer {
     position: fixed;
     left: 0;
@@ -103,6 +108,17 @@ footer {
 
 footer p {
     padding: 5px 0 12px 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: #999999;
+}
+
+footer a:hover {
+    color: #DF2621;
+    background-color: transparent;
+    text-decoration: none;
 }
 
 .clickable {

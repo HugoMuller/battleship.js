@@ -1,9 +1,19 @@
 <div id="gridPanel">
-  <table id="enemyGrid" class="bs-grid" data-ng-controller="EnemyGridController"></table>
-  <div id="divPlayerGrid" data-ng-controller="PlayerGridController" class="inline-block">
-    <table id="playerGrid" class="bs-grid"></table>
-  </div>
-  <div data-ng-controller="BoatListController" class="inline-block">
+  <div class="inline-block">
+    <div id="divEnemyGrid" data-ng-controller="EnemyGridController" class="inline-block">
+      <table id="enemyGrid" class="bs-grid" ></table>
+    </div>
+    
+    <div id="divPlayerGrid" data-ng-controller="PlayerGridController" class="inline-block">
+      <table id="playerGrid" class="bs-grid"></table>
+    </div>
+    
+    <div class="centered">
+      <button type="button" ng-click="">READY</button>
+    </div>
+  </div>  
+    
+  <div data-ng-controller="BoatListController" class="inline-block-top">
     <div class="clickable centered" ng-click="reset();">
       <img src="/img/icons/reset.png"/>
       Reset
